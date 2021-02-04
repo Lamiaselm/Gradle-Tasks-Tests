@@ -1,0 +1,44 @@
+
+tasks.register("putOnSocks") {
+doLast {
+println 'Putting on Socks'
+}
+}
+
+tasks.register("putOnShoes") {
+doLast {
+println 'Putting on Shoes'
+}
+}
+tasks.register("eatBreakfast") {
+doLast {
+println 'Omm breakfast!'
+}
+}
+tasks.register("brushYourTeeth") {
+doLast {
+println 'Brushie Brushie Brushie'
+}
+}
+tasks.register("takeShower") {
+doLast {
+println 'Taking a shower'
+}
+}
+tasks.register("putOnFragrance") {
+doLast {
+println 'melling fresh!'
+}
+}
+tasks.register("getReady") {
+doLast {
+println 'Im ready'
+}
+}
+
+putOnShoes.dependsOn "putOnSocks"
+eatBreakfast.finalizedBy "brushYourTeeth"
+takeShower.finalizedBy "putOnFragrance"
+putOnShoes.mustRunAfter "takeShower"
+getReady.dependsOn "eatBreakfast","putOnShoes","takeShower"
+
